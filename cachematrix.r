@@ -1,3 +1,9 @@
+## Two functions that speed up the process of using the inverse of 
+## a matrix by creating and using a cached copy.
+## CacheMatrix takes a matrix as an input and outputs a list of
+## functions that will set and retrieve variables (the input matrix and its
+## inverse) when called (from cacheSolve).
+
 Cachematrix <- function(x= matrix())
 {
   inv <- NULL
@@ -13,7 +19,11 @@ Cachematrix <- function(x= matrix())
       get = get,
    setInverse = setInverse,
    getInverse = getInverse)
- }
+}
+## cacheSolve takes the list output from CacheMatrix and
+## uses it to get the cached inverse of the matrix contained within, or
+## to calculate it if the it has not already been set.
+
  cacheSolve <- function(x,...)
  {
  inv <- x$getInverse()
